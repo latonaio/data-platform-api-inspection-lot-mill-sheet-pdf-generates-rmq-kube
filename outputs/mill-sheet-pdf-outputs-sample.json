@@ -1,0 +1,168 @@
+{
+  "connection_key": "",
+  "result": false,
+  "redis_key": "",
+  "filepath": "",
+  "api_status_code": 200,
+  "runtime_session_id": "a74d9e7edfed4e9992f1ef65d451af6c",
+  "business_partner": null,
+  "service_label": "FUNCTION_DPFM_MILL_SHEET_PDF",
+  "api_type": "generates",
+  "message": {
+    "Header": [
+      {
+        "OrderID": 1,
+        "OrderItem": 1,
+        "BuyerName": "TEST鋼材株式会社",
+        "SellerName": "TEST商事株式会社",
+        "Product": "SM570TMC-001",
+        "SizeOrDimensionText": " 11.00 X 2000.0 X  6000.0",
+        "OrderQuantityInBaseUnit": 1036.8,
+        "ProductSpecification": "SM570TMC",
+        "MarkingOfMaterial": "TEST",
+        "ProductionVersion": null,
+        "ProductionVersionItem": null,
+        "ProductionOrder": null,
+        "ProductionOrderItem": null,
+        "Contract": null,
+        "ContractItem": null,
+        "Project": 0,
+        "WBSElement": 0,
+        "InspectionLot": 1,
+        "InspectionPlantBusinessPartnerName": "",
+        "InspectionLotDate": "2024-01-02",
+        "InspectionSpecification": "TEST_Specification",
+        "HeatNumber": "",
+        "DrawingNo": "",
+        "PurchaseOrderNo": "",
+        "SpecDetails": [
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "SpecType": "Elongation",
+            "UpperLimitValue": 640,
+            "LowerLimitValue": 490,
+            "StandardValue": 0,
+            "SpecTypeUnit": "N/M",
+            "HeatNumber": null,
+            "SpecTypeTextInJA": ""
+          },
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "SpecType": "YeildStrength",
+            "UpperLimitValue": 640,
+            "LowerLimitValue": 490,
+            "StandardValue": 0,
+            "SpecTypeUnit": "N/M",
+            "HeatNumber": null,
+            "SpecTypeTextInJA": ""
+          },
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "SpecType": "TensibleStrength",
+            "UpperLimitValue": 640,
+            "LowerLimitValue": 490,
+            "StandardValue": 0,
+            "SpecTypeUnit": "N/M",
+            "HeatNumber": null,
+            "SpecTypeTextInJA": ""
+          }
+        ],
+        "ComponentCompositions": [
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "ComponentCompositionType": "C",
+            "ComponentCompositionUpperLimitInPercent": 0.35,
+            "ComponentCompositionLowerLimitInPercent": 0,
+            "ComponentCompositionStandardValueInPercent": 0,
+            "HeatNumber": null
+          },
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "ComponentCompositionType": "Mn",
+            "ComponentCompositionUpperLimitInPercent": 0.35,
+            "ComponentCompositionLowerLimitInPercent": 0,
+            "ComponentCompositionStandardValueInPercent": 0,
+            "HeatNumber": null
+          },
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "ComponentCompositionType": "Si",
+            "ComponentCompositionUpperLimitInPercent": 0.35,
+            "ComponentCompositionLowerLimitInPercent": 0,
+            "ComponentCompositionStandardValueInPercent": 0,
+            "HeatNumber": null
+          }
+        ],
+        "Inspections": [
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "Inspection": 1,
+            "InspectionType": "VisualInspection",
+            "InspectionTypeCertificateValueInText": "GOOD",
+            "InspectionTypeCertificateValueInQuantity": null,
+            "InspectionTypeValueUnit": null,
+            "InspectionTypeTextInJA": ""
+          },
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "Inspection": 2,
+            "InspectionType": "DimensionInspection",
+            "InspectionTypeCertificateValueInText": "GOOD",
+            "InspectionTypeCertificateValueInQuantity": null,
+            "InspectionTypeValueUnit": null,
+            "InspectionTypeTextInJA": ""
+          },
+          {
+            "OrderID": 1,
+            "OrderItem": 1,
+            "InspectionLot": 1,
+            "Inspection": 3,
+            "InspectionType": "HeatTreatmentConditionAndTemperature",
+            "InspectionTypeCertificateValueInText": "GOOD",
+            "InspectionTypeCertificateValueInQuantity": 880,
+            "InspectionTypeValueUnit": "℃",
+            "InspectionTypeTextInJA": ""
+          }
+        ],
+        "Remarks": "",
+        "ChiefOfInspectionSection": ""
+      }
+    ],
+    "GeneralDoc": {
+      "Product": "",
+      "DocType": "",
+      "DocVersionID": 0,
+      "DocID": null,
+      "FileExtension": "",
+      "FileName": "",
+      "FilePath": "",
+      "DocIssuerBusinessPartner": 0
+    }
+  },
+  "api_schema": "",
+  "accepter": [
+    "MillSheet"
+  ],
+  "deleted": false,
+  "api_processing_result": true,
+  "api_processing_error": "",
+  "mill_sheet_pdf": "",
+  "mount_path": "/mill-sheet-pdf/PldcaeVNvT/output.pdf"
+}
+

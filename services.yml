@@ -1,0 +1,102 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: data-platform-inspection-lot-mill-sheet-pdf-generates
+  name: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+      app: FUNC_INSPECTION_LOT_MILL_SHEET_PDF
+  template:
+    metadata:
+      labels:
+        run: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+        app: FUNC_INSPECTION_LOT_MILL_SHEET_PDF
+    spec:
+      hostname: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+      containers:
+        - name: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+          image: latonaio/data-platform-api-inspection-lot-mill-sheet-pdf-generates-rmq-kube
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: Asia/Tokyo
+            - name: RMQ_QUEUE_FROM
+              value: "data-platform-api-inspection-lot-mill-sheet-pdf-generates-queue"
+            - name: RMQ_QUEUE_TO_SQL
+              value: "sql-update-kube"
+            - name: RMQ_SESSION_CONTROL_QUEUE
+              value: "data-platform-api-inspection-lot-mill-sheet-pdf-generates-session-control-queue"
+            - name: MOUNT_PATH
+              value: "/inspection-lot-mill-sheet-pdf"
+            - name: MATERIAL_PATH
+              value: "/material"
+          envFrom:
+            - configMapRef:
+                name: env-config
+            - secretRef:
+                name: env-secret
+          volumeMounts:
+            - name: doc-storage
+              mountPath: /inspection-lot-mill-sheet-pdf
+            - name: material-storage
+              mountPath: /material
+      volumes:
+        - name: doc-persistent-storage
+          persistentVolumeClaim:
+            claimName: data-platform-api-inspection-lot-mill-sheet-pdf-generates-rmq-kube-pv-claim
+        - name: doc-storage
+          hostPath:
+            path: /mnt/data-platform-api-inspection-lot-mill-sheet-pdf-generates-rmq-kube/inspection-lot-mill-sheet-pdf
+        - name: material-storage
+          hostPath:
+            path: /mnt/data-platform-api-inspection-lot-mill-sheet-pdf-generates-rmq-kube/material
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-platform-api-inspection-lot-mill-sheet-pdf-generates-pv-claim
+  namespace: default
+spec:
+  storageClassName: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: data-platform-api-inspection-lot-mill-sheet-pdf-generates-pv-volume
+  labels:
+    type: local
+  namespace: default
+spec:
+  storageClassName: data-platform-api-inspection-lot-mill-sheet-pdf-generates-rmq-kube
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data-platform-api-inspection-lot-mill-sheet-pdf-generates-rmq-kube
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+  name: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+spec:
+  selector:
+    run: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+  type: NodePort
+  ports:
+    - name: data-platform-api-inspection-lot-mill-sheet-pdf-generates
+      port: 3000
+      protocol: TCP
+      nodePort: 30628
